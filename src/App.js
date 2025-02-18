@@ -1,11 +1,21 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import EmployeeForm from "./components/EmployeeForm";
 
 const App = () => {
-  const [employees, setEmployees] = useState([]);
+  // Load employees from local storage when the app starts
+  const [employees, setEmployees] = useState(() => {
+    const savedEmployees = localStorage.getItem("employees");
+    return savedEmployees ? JSON.parse(savedEmployees) : [];
+  });
 
+  // Save employees to local storage whenever the state updates
+  useEffect(() => {
+    localStorage.setItem("employees", JSON.stringify(employees));
+  }, [employees]);
+
+  // Function to add a new employee and update local storage
   const addEmployee = (newEmployee) => {
-    setEmployees([...employees, newEmployee]);
+    setEmployees((prevEmployees) => [...prevEmployees, newEmployee]);
   };
 
   return (

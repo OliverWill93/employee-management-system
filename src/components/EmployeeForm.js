@@ -9,17 +9,18 @@ const EmployeeForm = ({ addEmployee }) => {
     department: "",
   });
 
+  // Handle input changes
   const handleChange = (e) => {
-    const { name, value } = e.target;
     setEmployee((prev) => ({
       ...prev,
-      [name]: value,
+      [e.target.name]: e.target.value,
     }));
   };
 
+  // Handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!employee.firstName || !employee.lastName || !employee.email || !employee.department) {
+    if (Object.values(employee).some((field) => field.trim() === "")) {
       alert("All fields are required.");
       return;
     }
