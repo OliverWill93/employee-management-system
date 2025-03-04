@@ -1,24 +1,50 @@
-.employee-list {
-  margin-top: 20px;
-  padding: 15px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  background-color: #f9f9f9;
+.employee-list-container {
+  width: 80%;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #f8f9fa;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
 }
 
-.employee-list h2 {
-  color: #333;
+.tables-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; /* Centers the tables */
+  gap: 30px; /* Adds spacing between tables */
+  padding-top: 10px;
 }
 
-.employee-list ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-.employee-list li {
+.department-table {
+  width: 45%;
+  min-width: 300px;
   background: white;
-  margin: 5px 0;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.department-table h3 {
+  font-size: 1.3rem;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  border: 1px solid #ddd;
   padding: 10px;
-  border-radius: 4px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+th {
+  background-color: #007bff;
+  color: white;
 }

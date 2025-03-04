@@ -1,21 +1,35 @@
+// components/EmployeeList.js
 import React from "react";
-import "./EmployeeList.css";
+import { useSelector } from "react-redux";
+import EmployeeTable from "./EmployeeTable";
+import "../components/EmployeeList.css";
+import "../components/EmployeeForm.css";
 
-const EmployeeList = ({ employees }) => {
+
+const EmployeeList = () => {
+  const employees = useSelector((state) => state.employees);
+
+  const departments = {
+    Marketing: [],
+    Engineering: [],
+    Sales: [],
+    HR: [],
+  };
+
+  employees.forEach((employee) => {
+    if (departments[employee.department]) {
+      departments[employee.department].push(employee);
+    }
+  });
+
   return (
-    <div className="employee-list">
+    <div className="employee-list-container">
       <h2>Employee List</h2>
-      {employees.length === 0 ? (
-        <p>No employees added yet.</p>
-      ) : (
-        <ul>
-          {employees.map((emp, index) => (
-            <li key={index}>
-              <strong>{emp.firstName} {emp.lastName}</strong> - {emp.email} ({emp.department})
-            </li>
-          ))}
-        </ul>
-      )}
+      <div className="tables-container">
+        {Object.entries(departments).map(([dept, employees]) => (
+          <EmployeeTable key={dept} department={dept} employees={employees} />
+        ))}
+      </div>
     </div>
   );
 };
